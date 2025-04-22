@@ -1,34 +1,33 @@
 .global uniqueElements
 
 uniqueElements:
-    movq $0, %r9
-
-intialize:
-    cmpq $100000, %r9
-    jge counter
-    movq $0, (%rsi, %r9, 8)
-    incq %r9
-    jmp intialize
-
-counter:
-    movq $0, %r9
+    movq $0, %r9 # i = 0
+    movq %rcx, %r8
+    decq %r8 # n - 1
 
 loop:
     cmpq %r8, %r9
     jge end
 
-    movq (%rdi, %r9, 8), %r10
-    cmpq $0, (%rsi, %r10, 8)
-    jne notFirstTime
-    movq $1, (%rsi, %r10, 8)
-    movq %r10, (%rdx, %rcx, 8)
-    incq %rcx
-    jmp notFirstTime
+    movq %r9, %r10
+    incq %r10 # i + 1
 
-notFirstTime:
+    movq (%rdi, %r9, 8), %r11 # arr[i]
+    cmpq %r11, (%rdi, %r10, 8)
+    je incrementLoop
+
+    movq %r11, (%rsi, %rdx, 8)
+    incq %rdx
+    jmp incrementLoop
+
+incrementLoop:
     incq %r9
     jmp loop
 
 end:
-    movq %rcx, %rax
-    ret 
+    movq (%rdi, %r8, 8), %r11
+    movq %r11, (%rsi, %rdx, 8)
+    incq %rdx
+
+    movq %rdx, %rax
+    ret

@@ -1,17 +1,19 @@
 #include <stdio.h>
 #define MAX 100000
 
-int uniqueElements(long long *arr, long long *occurence, long long *ans, long long pointer, long long n);
+int uniqueElements(long long *arr, long long *ans, long long pointer, long long n);
 // {
-//     for (long long i = 0; i < n; i++)
+//     for (long long i = 0; i < n - 1; i++)
 //     {
-//         if (occurence[arr[i]] == 0)
+//         if (arr[i+1] != arr[i])
 //         {
-//             occurence[arr[i]] = 1;
 //             ans[pointer] = arr[i];
 //             pointer++;
 //         }  
 //     }
+
+//     ans[pointer] = arr[n-1];
+//     pointer++;
 //     return pointer;
 // }
 
@@ -24,10 +26,9 @@ int main()
     {
         scanf("%lld", &arr[i]);
     }
-    long long int ocurrence[MAX];
     long long ans[n];
     long long pointer = 0;
-    pointer = uniqueElements(arr, ocurrence, ans, pointer, n);
+    pointer = uniqueElements(arr, ans, pointer, n);
     for (long long i = 0; i < pointer; i++)
     {
         printf("%lld ", ans[i]);
