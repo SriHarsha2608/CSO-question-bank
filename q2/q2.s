@@ -1,6 +1,18 @@
 .global checkPalindrome
 
 checkPalindrome:
+    movq $0, %r10
+    movq $0, %rsi
+
+sizeLoop:
+    cmpb $0, (%rdi, %rsi, 1)
+    je endSizeLoop
+
+    incq %rsi
+    jmp sizeLoop
+
+endSizeLoop:
+
     movq $0, %rdx # left = 0
     movq %rsi, %rcx # right = n
     decq %rcx # right = n - 1
