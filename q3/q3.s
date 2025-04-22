@@ -1,6 +1,16 @@
 .global difference
 
 difference:
+    movq $0, %rsi
+
+sizeLoop:
+    cmpb $0, (%rdi, %rsi, 1)
+    je endSizeLoop
+
+    incq %rsi
+    jmp sizeLoop
+
+endSizeLoop:
     movq $0, %rax
     movq $0, %rdx
     decq %rsi

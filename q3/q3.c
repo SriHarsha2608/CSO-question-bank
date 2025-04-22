@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <string.h>
 #define MAX_LENGTH 101
 
-long long int difference(char *str, long long int n);
+long long int difference(char *str);
 // {
 //     long long int ans = 0;
 //     for (long long int i = 0; i < n - 1; i++)
@@ -24,8 +23,7 @@ int main()
 {
     char str[MAX_LENGTH];
     scanf("%s", str);
-    long long int len = strlen(str);
-    long long int ans = difference(str, len);
+    long long int ans = difference(str);
     printf("%lld\n", ans);
     return 0;
 }
