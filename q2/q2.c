@@ -19,7 +19,6 @@ int main()
 {
     char str[MAX_LENGTH];
     scanf("%s", str);
-    int len = strlen(str);
     long long ans = checkPalindrome(str);
     if (ans == 1)
     {
