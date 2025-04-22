@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <string.h>
-#define MAX_LENGTH 1000000
+#define MAX_LENGTH 20
 long long int checkPalindrome(char *str);
 // {
 //     long long int left = 0, right = n - 1;
@@ -18,8 +17,6 @@ long long int checkPalindrome(char *str);
 
 int main()
 {
-    // long long int n;
-    // scanf("%lld", &n);
     char str[MAX_LENGTH];
     scanf("%s", str);
     int len = strlen(str);
