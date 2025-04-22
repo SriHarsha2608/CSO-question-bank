@@ -1,6 +1,8 @@
 .global special
 
 special:
+    cmpq $0, %rdi
+    je notSp
     movq %rdi, %rsi # num
     movq $0, %rcx # sum
     movq %rdi, %rax
